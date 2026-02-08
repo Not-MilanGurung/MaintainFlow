@@ -1,0 +1,28 @@
+services:
+
+  frontend:
+    build: ./frontend
+    ports:
+      - "8080:8080"
+
+
+  backend:
+    build: ./backend
+    ports:
+      - "3000:3000"
+    environment:
+      MONGODB_URI: mongodb://root:mongoPass@mongo:27017/
+    depends_on:
+      - mongo
+  
+  mongo:
+    image: "mongo:noble"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: mongoPass
+    volumes:
+      - mongo:/data/db
+      - mongo:/data/configdb
+    
+volumes:
+  mongo:

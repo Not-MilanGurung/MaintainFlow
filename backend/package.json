@@ -1,0 +1,25 @@
+{
+  "name": "maintainflow_backend",
+  "version": "0.1.0",
+  "description": "The express backend with mongodb for MaintainFlow (Facility Maintanance Request Manangement System)",
+  "keywords": [
+    "mern"
+  ],
+  "license": "ISC",
+  "author": "notMilanGurung",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "dotenv": "^17.2.3",
+    "express": "^5.2.1",
+    "mongoose": "^9.1.6"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.11"
+  }
+}
