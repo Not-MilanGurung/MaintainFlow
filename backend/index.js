@@ -1,12 +1,12 @@
 const express = require('express');
-const config = require('./src/configs/config');
-const db = require('./src/configs/db');
 
 const app = express();
 app.use(express.json());
 
-db.connect();
+const requestsRoutes = require('./src/routes/request.route');
+app.use('/requests', requestsRoutes);
+const port = 3000;
 
-app.listen(config.PORT, () => {
-    console.log(`Server is running on port http://localhost:${config.PORT}`);    
+app.listen(port, () => {
+    console.log(`Server is running on port http://localhost:${port}`);    
 });
