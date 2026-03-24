@@ -1,12 +1,21 @@
 const express = require('express');
-
+const cookieParser = require('cookie-parser');
 const app = express();
+
+require('./src/configs/database');
+
+const { PORT } = require('./src/configs/config');
+
 app.use(express.json());
+app.use(cookieParser());
 
-const requestsRoutes = require('./src/routes/request.route');
-app.use('/requests', requestsRoutes);
-const port = 3000;
+const userRoutes = require('./src/routes/user.routes');
 
-app.listen(port, () => {
-    console.log(`Server is running on port http://localhost:${port}`);    
-});
+app.use('/users', userRoutes);
+
+const errorHandler = require('./src/middlewares/error-handler.middleware');
+app.use(errorHandler);
+
+app.listen(PORT, () => {
+	console.log(`The server is running on port ${PORT}`);
+})
