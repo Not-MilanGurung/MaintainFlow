@@ -127,7 +127,7 @@ const uploadAvatar = async (fileBuffer, userId) => {
 			}
 		).end(fileBuffer);
 	});
-	console.log(result);
+	
 	
 	user.avatar = result.secure_url;
 	await user.save();
