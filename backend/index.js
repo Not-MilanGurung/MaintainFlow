@@ -10,8 +10,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 const userRoutes = require('./src/routes/user.routes');
+const locationRoutes = require('./src/routes/location.routes');
+const requestRoutes = require('./src/routes/request.routes');
 
 app.use('/users', userRoutes);
+app.use('/locations', locationRoutes);
+app.use('/requests', requestRoutes);
 
 const errorHandler = require('./src/middlewares/error-handler.middleware');
 app.use(errorHandler);

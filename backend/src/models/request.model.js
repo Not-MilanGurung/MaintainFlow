@@ -32,10 +32,6 @@ const requestSchema = new mongoose.Schema(
 			ref: 'User',
 			required: true
 		},
-		maintainenceRecord: {
-			type: mongoose.Schema.Types.ObjectId,
-			ref: 'MaintainenceRecord',
-		},
 		completedAt: {
 			type: Date,
 		},

@@ -30,9 +30,7 @@ const get = async (page, limit, filter, sort) => {
 const getById = async (id) => {
 	const request = await Request.findById(id)
 		.populate('requester', 'name role avatar phone email')
-		.populate('location')
-		.populate('maintainenceRecord', 'maintainer status priority')
-		.populate('maintainer', 'name role avatar');
+		.populate('location');
 	if (!request) {
 		const error = new Error("Request not found");
 		error.statusCode = 404;
@@ -78,7 +76,7 @@ const updateById = async (id, userId, data) => {
 		error.statusCode = 404;
 		throw error;
 	}
-	const userIsRequesterOrAdmin = request.maintainer.equals(userId) || user.role === userRoles.values.ADMIN;
+	const userIsRequesterOrAdmin = request.requester.equals(userId) || user.role === userRoles.values.ADMIN;
 
 	if (!userIsRequesterOrAdmin) {
 		const error = new Error('Unauthorzied actioin');

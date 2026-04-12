@@ -29,7 +29,7 @@ const register = async (data) => {
 		refreshToken,
 		success: true,
 		message: 'User registerd successfully',
-		data: { user: newUser, tokens: { accessToken }}
+		data: { user: user, tokens: { accessToken }}
 	};
 }
 
